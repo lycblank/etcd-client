@@ -30,7 +30,7 @@
         <el-col :span="16">
           <div>
             <vue-json-editor v-if="etcdValueIsObject" v-model="etcdValue" :show-btns="false" :expandedOnStart="true"></vue-json-editor>
-            <el-input v-if="!etcdValueIsObject" type="textarea" v-model="etcdValue" :autosize="{minRows:35, maxRows:100}"></el-input>
+            <el-input v-if="!etcdValueIsObject" class="display-content" type="textarea" v-model="etcdValue" :autosize="{minRows:35, maxRows:100}"></el-input>
           </div>
         </el-col>
       </el-row>
@@ -163,6 +163,9 @@
     height: 100%;
   }
   .jsoneditor-vue{
+    height:calc(90vh);
+  }
+  .display-content{
     height:calc(90vh);
   }
 
