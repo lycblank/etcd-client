@@ -1,29 +1,33 @@
 <template>
   <div id="app">
       <el-row :gutter="18">
-        <el-col :span="4">
-          <el-input type="text" v-model="etcdAddr"
-                    placeholder="请输入etcd地址"></el-input>
+        <el-col :span="6">
+          <el-input
+                  type="text"
+                  v-model="etcdAddr"
+                  placeholder="请输入etcd地址"
+                  @keyup.native.enter="connectEtcd"
+          ></el-input>
         </el-col>
         <el-col :span="1">
           <el-button icon="el-icon-s-promotion" @click="connectEtcd"></el-button>
         </el-col>
-        <el-col :span="1" :offset="17">
+        <el-col :span="1">
           <el-button icon="el-icon-check" @click="saveToEtcd">保存</el-button>
         </el-col>
       </el-row>
       <el-row>
-        <el-col :span="4">
+        <el-col :span="8">
           <el-tree
+                  class="dir-tree"
                   node-key="value"
                   :data="datas"
                   @node-click="clickTreeNode"
                   @node-contextmenu="rightClickTreeNode"
-                  hight="80%"
           >
           </el-tree>
         </el-col>
-        <el-col :span="20">
+        <el-col :span="16">
           <div>
             <vue-json-editor v-if="etcdValueIsObject" v-model="etcdValue" :show-btns="false" :expandedOnStart="true"></vue-json-editor>
             <el-input v-if="!etcdValueIsObject" type="textarea" v-model="etcdValue" :autosize="{minRows:35, maxRows:100}"></el-input>
@@ -139,5 +143,27 @@
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
+    height:100%;
   }
+
+  .dir-tree {
+    border-style:solid;
+    border-width:1px;
+    height:calc(90vh);
+    overflow-y:auto;
+    overflow-x:scroll;
+  }
+  .el-row {
+    margin-bottom: 20px;
+  }
+
+  html,body,#app,.el-container{
+    padding: 0px;
+    margin: 4px;
+    height: 100%;
+  }
+  .jsoneditor-vue{
+    height:calc(90vh);
+  }
+
 </style>
