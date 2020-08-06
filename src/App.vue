@@ -42,7 +42,7 @@
   export default {
     data: function() {
       return {
-        etcdAddr: 'http://10.10.11.11:3379/v2/keys',
+        etcdAddr: 'http://10.10.103.222:3379/v2/keys',
         etcdValue: {},
         datas:[],
         defaultProps:{
