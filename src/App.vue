@@ -15,6 +15,9 @@
         <el-col :span="1">
           <el-button icon="el-icon-check" @click="saveToEtcd">保存</el-button>
         </el-col>
+        <el-col :span="8">
+          <div style="color:red;margin-top:10px;font-size:large">{{ this.treeNodeData.value }}</div>
+        </el-col>
       </el-row>
       <el-row>
         <el-col :span="8">
@@ -42,7 +45,7 @@
   export default {
     data: function() {
       return {
-        etcdAddr: 'http://10.10.103.222:3379/v2/keys',
+        etcdAddr: 'http://10.10.104.223:3379/v2/keys',
         etcdValue: {},
         datas:[],
         defaultProps:{
@@ -81,8 +84,8 @@
                     }
                   }
                 })
-                .catch(function(err){
-                  alert(err)
+                .catch(function(){
+                  //alert(err)
                 })
       },
       connectEtcd: function() {
